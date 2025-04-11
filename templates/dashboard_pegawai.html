@@ -1,0 +1,12 @@
+<h2>Dashboard Pegawai - {{ session['user'] }}</h2>
+<a href="/logout">Logout</a> | <a href="/tambah">Tambah Kinerja</a>
+<table border="1">
+  <tr><th>Nama</th><th>Tugas</th><th>Capaian</th><th>Bukti</th><th>Status</th></tr>
+  {% for d in data if d[1] == session['user'] %}
+  <tr>
+    <td>{{ d[1] }}</td><td>{{ d[2] }}</td><td>{{ d[3] }}</td>
+    <td><a href="/download/{{ d[4] }}">Download</a></td>
+    <td>{{ d[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
